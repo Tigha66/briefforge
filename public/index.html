@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BriefForge - AI Knowledge Brief Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2); }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 min-h-screen text-white">
+  <!-- Header -->
+  <header class="border-b border-white/10 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <i class="fas fa-file-lines text-white"></i>
+        </div>
+        <span class="text-xl font-bold">BriefForge</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="bg-indigo-500 hover:bg-indigo-400 px-4 py-2 rounded-xl font-medium">
+          <i class="fas fa-plus mr-2"></i>New Brief
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Stats -->
+    <div class="grid grid-cols-4 gap-4 mb-8">
+      <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fas fa-file text-indigo-400"></i>
+          <span class="text-slate-400 text-sm">Total Briefs</span>
+        </div>
+        <p class="text-3xl font-bold">89</p>
+        <p class="text-green-400 text-sm mt-1">+12 this month</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fas fa-clock text-green-400"></i>
+          <span class="text-slate-400 text-sm">Time Saved</span>
+        </div>
+        <p class="text-3xl font-bold">45h</p>
+        <p class="text-green-400 text-sm mt-1">Reading time</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fas fa-brain text-purple-400"></i>
+          <span class="text-slate-400 text-sm">AI Insights</span>
+        </div>
+        <p class="text-3xl font-bold">342</p>
+        <p class="text-green-400 text-sm mt-1">Generated</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fas fa-download text-blue-400"></i>
+          <span class="text-slate-400 text-sm">Exports</span>
+        </div>
+        <p class="text-3xl font-bold">156</p>
+        <p class="text-green-400 text-sm mt-1">PDF/Markdown</p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Create Brief -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-magic text-green-400"></i> Create New Brief
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-slate-400 text-sm mb-2">Document URL or Text</label>
+            <textarea placeholder="Paste URL, article, or paste text here..." class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white placeholder-slate-500" rows="4"></textarea>
+          </div>
+          <div>
+            <label class="block text-slate-400 text-sm mb-2">Brief Type</label>
+            <select class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white">
+              <option>Executive Summary</option>
+              <option>Key Insights</option>
+              <option>Full Analysis</option>
+              <option>Quick Overview</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-400 text-sm mb-2">Export Format</label>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-indigo-500/20 text-indigo-400 px-3 py-2 rounded-lg text-sm"><i class="fas fa-file-pdf mr-1"></i>PDF</button>
+              <button class="flex-1 bg-white/10 text-white px-3 py-2 rounded-lg text-sm"><i class="fab fa-markdown mr-1"></i>Markdown</button>
+              <button class="flex-1 bg-white/10 text-white px-3 py-2 rounded-lg text-sm"><i class="fas fa-sticky-note mr-1"></i>Notion</button>
+            </div>
+          </div>
+          <button class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-400 hover:to-purple-400 py-3 rounded-xl font-medium">
+            <i class="fas fa-wand-magic-sparkles mr-2"></i>Generate Brief
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Briefs -->
+      <div class="col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-clock text-indigo-400"></i> Recent Briefs
+        </h2>
+        <div class="space-y-3">
+          <div class="bg-white/5 rounded-xl p-4">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <p class="font-medium">2026 Tech Trends Analysis</p>
+                <p class="text-slate-400 text-sm">URL: techreport.com/trends-2026</p>
+              </div>
+              <span class="text-slate-500 text-xs">2 hours ago</span>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded text-xs"><i class="fas fa-eye mr-1"></i>View</button>
+              <button class="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs"><i class="fas fa-download mr-1"></i>PDF</button>
+              <button class="bg-white/10 text-white px-3 py-1 rounded text-xs"><i class="fab fa-markdown mr-1"></i>MD</button>
+            </div>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <p class="font-medium">AI Market Research</p>
+                <p class="text-slate-400 text-sm">URL: marketwatch.com/ai-analysis</p>
+              </div>
+              <span class="text-slate-500 text-xs">Yesterday</span>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded text-xs"><i class="fas fa-eye mr-1"></i>View</button>
+              <button class="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs"><i class="fas fa-download mr-1"></i>PDF</button>
+              <button class="bg-white/10 text-white px-3 py-1 rounded text-xs"><i class="fab fa-markdown mr-1"></i>MD</button>
+            </div>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <p class="font-medium">Startup Funding Guide</p>
+                <p class="text-slate-400 text-sm">Pasted text (2,450 words)</p>
+              </div>
+              <span class="text-slate-500 text-xs">3 days ago</span>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded text-xs"><i class="fas fa-eye mr-1"></i>View</button>
+              <button class="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs"><i class="fas fa-download mr-1"></i>PDF</button>
+              <button class="bg-white/10 text-white px-3 py-1 rounded text-xs"><i class="fab fa-notion mr-1"></i>Notion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sample Output -->
+    <div class="mt-8 bg-white/5 border border-white/10 rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <i class="fas fa-file-contract text-purple-400"></i> Sample Brief Output
+      </h2>
+      <div class="bg-white/5 rounded-xl p-4">
+        <h3 class="text-lg font-bold text-white mb-2">Executive Summary: 2026 Tech Trends</h3>
+        <p class="text-slate-300 text-sm mb-4">The document analyzes emerging technology trends for 2026, focusing on AI, quantum computing, and sustainable tech. Key findings include...</p>
+        <h4 class="text-white font-medium mb-2">Key Insights:</h4>
+        <ul class="text-slate-300 text-sm space-y-1 mb-4">
+          <li><i class="fas fa-check text-green-400 mr-2"></i>AI adoption expected to grow 340% in enterprise</li>
+          <li><i class="fas fa-check text-green-400 mr-2"></i>Quantum computing reaching commercial viability</li>
+          <li><i class="fas fa-check text-green-400 mr-2"></i>Sustainable tech investments up 180%</li>
+        </ul>
+        <div class="flex gap-2">
+          <button class="bg-indigo-500/20 text-indigo-400 px-4 py-2 rounded-lg text-sm"><i class="fas fa-copy mr-1"></i>Copy</button>
+          <button class="bg-green-500/20 text-green-400 px-4 py-2 rounded-lg text-sm"><i class="fas fa-download mr-1"></i>Export PDF</button>
+          <button class="bg-white/10 text-white px-4 py-2 rounded-lg text-sm"><i class="fab fa-notion mr-1"></i>Send to Notion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Integrations -->
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+        <i class="fas fa-plug text-blue-400"></i> Export Integrations
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-file-pdf text-2xl text-red-400"></i>
+            <span class="font-medium">PDF</span>
+          </div>
+          <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Ready</span>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fab fa-markdown text-2xl text-white"></i>
+            <span class="font-medium">Markdown</span>
+          </div>
+          <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Ready</span>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fab fa-notion text-2xl text-white"></i>
+            <span class="font-medium">Notion</span>
+          </div>
+          <button class="text-indigo-400 text-xs">Connect</button>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fab fa-github text-2xl text-white"></i>
+            <span class="font-medium">GitHub</span>
+          </div>
+          <button class="text-indigo-400 text-xs">Connect</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-8 px-6 border-t border-white/10 mt-8">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-slate-500 text-sm"><i class="fas fa-file-lines mr-2"></i>BriefForge - AI Knowledge Brief Generator • <i class="fas fa-heart text-red-400"></i> by Tigha66</p>
+    </div>
+  </footer>
+</body>
+</html>
